@@ -17,7 +17,7 @@ Simple RNN training for sine wave estimation.
 
 ### 03- RNN_vs_GRU_Classification
 
-Comparison of RNN model and GRU model for classification task of 3 signal: Sine, Square, Triangle.
+Comparison of RNN model and GRU model for classification task of 3 signal: Sine, Square and Triangle, after 100 epoch training.
 
 
 | Model | Accuracy |
@@ -29,7 +29,7 @@ Comparison of RNN model and GRU model for classification task of 3 signal: Sine,
 
 ### 04- RNN_vs_GRU_Regression
 
-Comparison of RNN model and GRU model for regression task of sine wave estimation.
+Comparison of RNN model and GRU model for regression task of sine wave estimation after 100 epoch training.
 
 
 | Model | loss |
