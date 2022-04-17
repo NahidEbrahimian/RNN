@@ -43,4 +43,29 @@ Comparison of RNN model and GRU model for regression task of sine wave estimatio
 
 ![02](https://user-images.githubusercontent.com/82975802/161124491-0d1061c0-c7e9-428a-98a7-77f93c762a71.png)
 
+#
 
+### 05- Ball_Move_Data_Generation
+
+Generate data for ball move direction
+
+![image](https://user-images.githubusercontent.com/82975802/163728473-e6681737-8077-464e-a9c3-17a9a3e40115.png)
+
+
+### 06- GRU_Implementation_from_Scratch
+
+GRU implementation from scratch + inference
+
+# 
+
+### 07-LSTM_Implementation_from_Scrat
+
+LSTM implementation from scratch + inference
+
+#
+
+### 08- Ball_Move_Direction_Classification
+
+- Generate data for ball move direction 
+
+- Classification of direction using RNN, GRU and LSTM
