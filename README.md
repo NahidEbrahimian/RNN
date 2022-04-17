@@ -51,6 +51,7 @@ Generate data for ball move direction
 
 ![image](https://user-images.githubusercontent.com/82975802/163728473-e6681737-8077-464e-a9c3-17a9a3e40115.png)
 
+#
 
 ### 06- GRU_Implementation_from_Scratch
 
