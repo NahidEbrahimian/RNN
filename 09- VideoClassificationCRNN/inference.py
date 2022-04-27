@@ -42,11 +42,11 @@ class_name = ["Natrual", "Elahi Shokr"]
 models = Models((frame_height, frame_width), num_frames)
 model = models.GRU_model()
 
-# if not os.path.exists("weights"):
-#     os.makedirs("weights")
-#         # os.makedirs(model_path)
-# gdd.download_file_from_google_drive(file_id="1Aw7zEKmI4rdsEtVwhYOqLDC_0KnTLb-7",
-#                                         dest_path='weights/gru_model.h5')
+if not os.path.exists("weights"):
+    os.makedirs("weights")
+        # os.makedirs(model_path)
+gdd.download_file_from_google_drive(file_id="1Aw7zEKmI4rdsEtVwhYOqLDC_0KnTLb-7",
+                                        dest_path='weights/gru_model.h5')
 
 model.load_weights("weights/gru_model.h5")
 pred = model.predict([input_frames, input_masks])
