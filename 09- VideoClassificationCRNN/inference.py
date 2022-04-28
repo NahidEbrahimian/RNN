@@ -27,8 +27,8 @@ parser.add_argument("--input_path", type=str)
 args = parser.parse_args()
 
 input_path = args.input_path
-frame_width = 110
-frame_height = 110
+frame_width = 112
+frame_height = 112
 
 
 if not os.path.exists("outputs"): # Create output directory
@@ -36,19 +36,25 @@ if not os.path.exists("outputs"): # Create output directory
 
 
 input_frames, input_masks, num_frames = preparing_input(input_path, (frame_width, frame_height)) # prepairing input
-class_name = ["Natrual", "Elahi Shokr"]
+class_name = ["حالت معمولی", "الهی صد هزار مرتبه شکر"]
 
 # Load model and weights
 models = Models((frame_height, frame_width), num_frames)
-model = models.GRU_model()
+model = models.RNN_model()
+
+
+# model_path='model'
+# path = 'model/{}.h5'.format(args.dataset_name)
+
+id = ""
 
 if not os.path.exists("weights"):
     os.makedirs("weights")
         # os.makedirs(model_path)
-gdd.download_file_from_google_drive(file_id="1Aw7zEKmI4rdsEtVwhYOqLDC_0KnTLb-7",
-                                        dest_path='weights/gru_model.h5')
+    gdd.download_file_from_google_drive(file_id=id,
+                                        dest_path="weights")
 
-model.load_weights("weights/gru_model.h5")
+model.load_weights("weights/rnn_model.h5")
 pred = model.predict([input_frames, input_masks])
 
 predicted_class = np.argmax(pred)
@@ -56,22 +62,21 @@ label = class_name[predicted_class]
 
 
 # Write video
-color = (0, 0, 0)
+color = (255, 255, 0)
 video = cv2.VideoCapture(input_path)
 
 height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
 width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
-fps = int(video.get(cv2.CAP_PROP_FPS))
 
-video_writer = cv2.VideoWriter("outputs/out_put.mp4", cv2.VideoWriter_fourcc(*'XVID'), fps, (width, height))
+video_writer = cv2.VideoWriter("outputs/out_put.avi", cv2.VideoWriter_fourcc(*'MJPG'), 10, (width, height), 0)
 
 while True:
     ret, frame = video.read()
     
     if ret == True:
-      cv2.putText(frame, label, (width // 10, height // 10), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 1,
+      cv2.putText(frame, label, (width - 50, height - 50), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 1,
                   cv2.LINE_AA)
-
+      # cv2.imshow('output', frame)
       video_writer.write(frame)
         
     else:
@@ -79,5 +84,4 @@ while True:
 
 video.release()
 video_writer.release()
-cv2.destroyAllWindows()
 
